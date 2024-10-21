@@ -18,12 +18,14 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-mustache'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	runtimeOnly 'com.h2database:h2'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	compileOnly 'org.projectlombok:lombok:1.18.34'
+	annotationProcessor 'org.projectlombok:lombok:1.18.34'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.3.2'
+	implementation 'org.springframework.boot:spring-boot-starter-mustache:3.3.2'
+	implementation 'org.springframework.boot:spring-boot-starter-web:3.3.2'
+	runtimeOnly 'com.h2database:h2:2.2.224'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:3.3.1'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.10.3'
 }
 
 tasks.named('test') {
