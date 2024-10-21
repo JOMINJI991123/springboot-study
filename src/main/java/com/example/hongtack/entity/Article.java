@@ -1,10 +1,8 @@
 package com.example.hongtack.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -12,13 +10,26 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Getter
 public class Article {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
     private String title;
     @Column
     private String content;
+
+    public void patch(Article article){
+        if (article.title != null){
+            this.title = article.title;
+        }
+        if (article.content != null){
+            this.content = article.content;
+        }
+
+    }
+
+
 
 }
