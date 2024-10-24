@@ -1,8 +1,10 @@
 package com.example.hongtack.controller;
 
 import com.example.hongtack.dto.ArticleForm;
+import com.example.hongtack.dto.CommentDto;
 import com.example.hongtack.entity.Article;
 import com.example.hongtack.repository.ArticleRepository;
+import com.example.hongtack.service.CommentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,8 @@ import java.util.List;
 @Slf4j
 public class ArticleController {
 
+    @Autowired
+    private CommentService commentService;
     @Autowired
     private ArticleRepository articleRepository;
     @GetMapping("/articles/new")
@@ -40,8 +44,13 @@ public class ArticleController {
         log.info("id="+id);
 
         Article articeEntity = articleRepository.findById(id).orElse(null);
+
+        List<CommentDto> commentDtos = commentService.comments(id);
+
+        model.addAttribute("commentDtos",commentDtos);
         log.info(articeEntity.toString());
         model.addAttribute("article", articeEntity);
+
 
         return "articles/show";
     }
