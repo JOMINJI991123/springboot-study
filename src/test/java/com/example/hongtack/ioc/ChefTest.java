@@ -17,8 +17,6 @@ class ChefTest {
     @Test
     void 돈가스_요리하기(){
 
-
-//        Chef chef = new Chef(ingredientFactory);
         String menu = "돈가스";
 
         String food = chef.cook(menu);
