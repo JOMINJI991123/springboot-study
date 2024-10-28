@@ -1,5 +1,6 @@
 package com.example.hongtack.service;
 
+import com.example.hongtack.annotation.RunningTime;
 import com.example.hongtack.dto.CommentDto;
 import com.example.hongtack.entity.Article;
 import com.example.hongtack.entity.Comment;
@@ -54,6 +55,7 @@ public class CommentService {
         return CommentDto.createCommentDto(updated);
     }
 
+    @RunningTime
     @Transactional
     public CommentDto delete(Long id) {
         Comment target = commentRepository.findById(id)
